@@ -3,23 +3,24 @@ import './MoviesView.scss'
 
 class MoviesView extends Component {
     render() {
+        const {movieItem} = this.props
         return (
             <div className="MoviesView">
                 <p>
-                 <img src="" alt=""/>
+                 <img src={movieItem.thumbUrl} alt=""/>
                 </p>
                 <div>
-                    <h3>제목</h3>
+                    <h3>{movieItem.movieNm}</h3>
                     <ul>
-                        <li><span>개봉일</span> : ??????????? </li>
-                        <li><span>제작상태</span> :  </li>
-                        <li><span>영화구분</span> :  </li>
-                        <li><span>관람등급</span> :  </li>
-                        <li><span>상영시간</span> :  </li>
-                        <li><span>상영시간</span> :  </li>
-                        <li><span>제작국가</span> :  </li>
-                        <li><span>감독</span> :  </li>
-                        <li><span>배급사</span> :  </li>
+                        <li><span>개봉일</span> : {movieItem.openDt} </li>
+                        <li><span>제작상태</span> : {movieItem.moviePrdtStat} </li>
+                        <li><span>영화구분</span> : {movieItem.movieType} </li>
+                        <li><span>관람등급</span> : {movieItem.watchGradeNm} </li>
+                        <li><span>상영시간</span> : {movieItem.showTs}분 </li>
+                        <li><span>관객수</span> : {movieItem.audiCnt} 명 </li>
+                        <li><span>제작국가</span> : {movieItem.repNationCd} </li>
+                        <li><span>감독</span> : {movieItem.director} </li>
+                        <li><span>배급사</span> : {movieItem.dtNm} </li>
                     </ul>
                 </div>
             </div>

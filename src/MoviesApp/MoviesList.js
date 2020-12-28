@@ -4,7 +4,7 @@ import './MoviesList.scss'
 
 class MoviesList extends Component {    
     render() {
-        const { movies } = this.props 
+        const { movies, onOver, onOut, onOpen } = this.props 
         return (
             <div className="MoviesList">
                 <table>
@@ -25,7 +25,7 @@ class MoviesList extends Component {
                     </thead>
                     <tbody>
                           {
-                              movies.map( movie => <MoviesItem  movie={movie} />)
+                              movies.map( movie => <MoviesItem key={movie.rank} movie={movie} onOver={onOver} onOut={onOut} onOpen={onOpen} />)
                           }  
                     </tbody>
                 </table>

@@ -8,15 +8,51 @@ import Modal from './Modal';
 
 class Movies extends Component {
     state = {
-        movies : Data 
+        movies : Data ,
+        movieItem : {},
+        isOpen : false
+    }
+    componentDidMount() {
+        const {movies} = this.state
+        this.setState({
+            movieItem: movies[0]
+        })
+    }
+    handleOver = (id) => {
+        //find
+        const {movies} = this.state
+        //movieItem : movies[2] => find{} /filter[]
+        this.setState({
+            movieItem : movies.find(movie => movie.rank === id)
+        })
+    }
+    handleOut = () => {
+        const{movies}=this.state
+        this.setState({
+            movieItem : movies[0]
+        })
+    }
+    handleOpen = (id) => {
+        const{movies} = this.state
+        this.setState({
+            isOpen:true,
+            movieItem : movies.find(movie=> movie.rank === id)
+        })
+    }
+    handleClose = () => {
+        this.setState({
+            isOpen: false
+        })
     }
     render() {
-        const {movies} = this.state 
+        const {movies, movieItem,isOpen} = this.state 
         return (
             <div className="Movies">
-                <MoviesView />
-                <MoviesList movies = {movies} />
-                
+                <MoviesView movieItem = {movieItem}/>
+                <MoviesList movies = {movies} onOver={this.handleOver} onOut={this.handleOut} onOpen={this.handleOpen}/>
+                {
+                    isOpen && <Modal movieItem={movieItem} onClose={this.handleClose}/>
+                }
             </div>
         );
     }
