@@ -7,11 +7,12 @@ import Test6 from './components/Test6';
 import Test7 from './components/Test7';
 import Test8 from './components/Test8';
 import Test9 from './components/Test9';
+import Movies from './MoviesApp/Movies';
 
 const App = () => {
   return (
     <div>
-      <Test12/>
+      <Movies/>
     </div>
   );
 };
